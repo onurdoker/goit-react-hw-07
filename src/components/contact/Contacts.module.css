@@ -1,0 +1,33 @@
+
+.icon {
+    margin-right: 10px;
+}
+
+.contactInfo {
+    flex-grow: 1;
+}
+
+.contactName {
+    font-weight: bold;
+}
+
+.phoneIcon {
+    margin-right: 5px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn {
+    justify-content: right;
+    width: 100px;
+    margin: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #FFFFFF;
+    border: none;
+    background: #2E2E2E;
+}
