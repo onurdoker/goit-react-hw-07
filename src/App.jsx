@@ -1,21 +1,29 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { fetchContacts } from "./redux/contactsSlice";
+import ContactForm from "./components/contactForm/ContactForm.jsx";
 import ContactList from "./components/contactList/ContactList.jsx";
-import { fetchContacts } from "./redux/contactsSlice.js";
+import SearchBox from "./components/searchBox/SearchBox.jsx";
 
-const App = () => {
+import "./App.css";
+
+function App() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-              dispatch(fetchContacts());
-            },
-            [dispatch]);
+    dispatch(fetchContacts());
+  }, [dispatch]);
   
   return (
       <div>
-        <ContactList />
+        <h1>Phonebook</h1>
+        <div>
+          <ContactForm />
+          <SearchBox />
+          <ContactList />
+        </div>
       </div>
   );
-};
+}
 
 export default App;
