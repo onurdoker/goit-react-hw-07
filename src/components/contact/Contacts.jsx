@@ -1,10 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
+import { IoPersonSharp } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa";
 
-const Contacts = () => {
+import styles from "./Contacts.module.css";
+
+const Contacts = ({ contact }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
   
   const handleDelete = (contactId) => {
     if (window.confirm("Are you sure you want to delete this contact?")) {
@@ -13,28 +16,18 @@ const Contacts = () => {
   };
   
   return (
-      <div>
-        <h2>Contact List</h2>
-        {contacts.length === 0 ? (
-            <p>No contacts available.</p>
-        ) : (
-            contacts.map(contact => (
-                <div
-                    key={contact.id}
-                    className="contact-item"
-                >
-                  <p><strong>Name:</strong> {contact.name}</p>
-                  <p><strong>Number:</strong> {contact.phone}</p>
-                  <button
-                      onClick={() => handleDelete(contact.id)}
-                      disabled={contacts.length === 1}
-                  >
-                    Delete
-                  </button>
-                </div>
-            ))
-        )}
-      </div>
+      <>
+        <li>
+          <IoPersonSharp /> {contact.name} <br />
+          <FaPhone /> {contact.phone}
+        </li>
+        <button
+            className={styles.btn}
+            onClick={() => handleDelete(contact.id)}
+        >
+          Delete
+        </button>
+      </>
   );
 };
 

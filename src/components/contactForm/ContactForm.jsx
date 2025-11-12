@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import contactsReducer, { selectContacts, addContact } from "../../redux/contactsSlice.js";
+import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
   const nameId = useId();
@@ -79,42 +80,44 @@ const ContactForm = () => {
             touched,
             errors,
           }) => (
-            <Form className="contact-form">
-              <div>
+            <Form className={styles.form}>
+              <div className={styles.name}>
                 <label htmlFor={nameId}>Name:</label>
                 <Field
                     type="text"
                     name="name"
                     id={nameId}
                     placeholder="Enter Name"
+                    className={styles.searchField}
                 />
                 {touched.name && errors.name ? (
                     <ErrorMessage
                         component="div"
                         name="name"
-                        className="error"
+                        className={styles.error}
                     />
                 ) : null}
               </div>
               
-              <div>
+              <div className={styles.name}>
                 <label htmlFor={numberId}>Number:</label>
                 <Field
                     type="text"
                     name="number"
                     id={numberId}
                     placeholder="Enter Number"
+                    className={styles.searchField}
                 />
                 {touched.number && errors.number ? (
                     <ErrorMessage
                         component="div"
                         name="number"
-                        className="error"
+                        className={styles.error}
                     />
                 ) : null}
               </div>
               
-              <button type="submit">Add Contact</button>
+              <button type="submit" className={styles.btn}>Add Contact</button>
             </Form>
         )}
       </Formik>
